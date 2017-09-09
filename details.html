@@ -1,27 +1,50 @@
 <html>
-<body bgcolor="gray">
+<head>
+<script type="text/javascript">
+function validation()
+{
+    var name1=document.formvalidation.name1.value,
+	ph=document.formvalidation.ph.value;
+
+	if(name1.length==0)
+		window.alert("name must be entered");
+	else if(name1.length<6)
+		window.alert("name atleast 6 characters");
+	else if(ph.length<=9||ph.length>=11)
+		window.alert("enter valid phone number");
+	if(isNaN(ph))
+	{
+		alert("enter numbers only at phone number");
+		return false;
+	}
+}
+</script>
+<style>
+body {background-image: url("detailbg.jpg");}
+</style>
+</head>
+
+<body bgcolor="#ccff99">
 <center>
-<form method="post" action="">
-<table border="5" width="50%" bordercolor="blue">
-<font color="green"
+<font color="red"
 <p><h1>Land Details</h1></p></font>
-<thead bgcolor="yellow">
+
+<form name="formvalidation" method="post" action="">
+<table border="1" width="60%" bordercolor="blue">
+
+<thead bgcolor="#ffcc99">
 <tr>
 	<td>
 		<p><label>Owner name :</label></p>
 	</td>
 	<td colspan="2">
-		<input name="name" type="text" size="15" maxlength="30" placeholder="Enter name"/>
+		<input name="name1" type="text" size="15" maxlength="30" placeholder="Enter name"/>
 	</td>
 </tr>
 
 <tr>
-	<td >
-		<p><label>Form Number :</label></p>
-	</td>
-	<td colspan="2">
-		<input name="name" type="text" size="15" maxlength="30"/>
-	</td>
+	<td><label>Phone numbe:</label></td>
+	<td><input type="text" name="ph" size="10" maxlength="12" placeholder="Phone number"/></td>
 </tr>
 
 <tr>
@@ -61,11 +84,13 @@
 	<td>
 		<p><label>Water Availability :</label></p>
 	</td>
-		<td>
-		<input name="available" type="radio" value="yes">Yes</input>
-	</td>
 	<td>
-		<input name="available" type="radio" value="no" >No</input>
+		<select name="drop down">
+		<option value="1">Ample</option>
+		<option value="2">Adequate</option>
+		<option value="3">Insufficient</option>
+		<option value="4">No water</option>
+		</select>
 	</td>
 </tr>
 
@@ -88,6 +113,8 @@
 </tr>
 
 <th colspan="3">
+Check your details before submitting.<br/>
+	<input type="button" value="check" onclick="validation()"/>
 	<input type="submit" value="submit"/>
 	<input type="reset" value="clear"/>
 </th>
