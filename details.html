@@ -1,77 +1,153 @@
 <html>
-<body bgcolor="gray">
+<head>
+<script type="text/javascript">
+function validation()
+{
+    var o_name=document.formvalidation.o_name.value,
+	o_phone=document.formvalidation.o_phone.value;
+
+	if(o_name.length==0)
+		window.alert("name must be entered");
+	else if(o_name.length<6)
+		window.alert("name atleast 6 characters");
+	else if(o_phone.length<=9||o_phone.length>=11)
+		window.alert("enter valid phone number");
+	if(isNaN(o_phone))
+	{
+		alert("enter numbers only at phone number");
+		return false;
+	}
+}
+</script>
+<style>
+body {background-image: url("detailbg.jpg"); }
+#round {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 10px; 
+    width: 40%;
+    height: 15px;    
+}
+#round2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 70%;
+    height: 15px;    
+}
+.button {
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button4 {border-radius: 12px;}
+.success {background-color: #4CAF50;}
+.success:hover {background-color: #46a049;}
+.warning {background-color: #ff9800;}
+.warning:hover {background: #e68a00;}
+.danger {background-color: #f44336;}
+.danger:hover {background: #da190b;}
+</style>
+</head>
+
+<body bgcolor="#ccff99">
 <center>
-<form method="post" action="">
-<table border="5" width="50%" bordercolor="blue">
-<font color="green"
+<font color="red"
 <p><h1>Land Details</h1></p></font>
-<thead bgcolor="yellow">
+
+<form name="formvalidation" method="post" action="">
+<table border="0" width="50%">
+
+<thead>
 <tr>
-	<td>
+	<td id="round">
 		<p><label>Owner name :</label></p>
 	</td>
 	<td colspan="2">
-		<input name="name" type="text" size="15" maxlength="30" placeholder="Enter name"/>
+		<input  id="round2" name="o_name" type="text" size="15" placeholder="Enter name"/>
 	</td>
 </tr>
 
+<tr>
+	<td id="round"><label>Phone number:</label></td>
+	<td ><input id="round2" type="text" name="o_phone" size="15" placeholder="Phone number"/></td>
+</tr>
 
 <tr>
-	<td >
+	<td id="round">
 		<p><label>Land size :</label></p>
 	</td>
 	<td colspan="2">
-
+		<input id="round2" name="l_size" type="text" size="15" placeholder="Enter size in acres"/>
 	</td>
 </tr>
 	
 <tr>
-	<td>
+	<td id="round">
 		<p><label>Village :</label></p>
 	</td>
 	<td colspan="2">
-		<input name="name" type="text" size="15" maxlength="30" placeholder="Enter Village name"/>
+		<input id="round2" name="village" type="text" size="15" placeholder="Enter Village name"/>
 	</td>
 </tr>
 
 <tr>
-	<td>
+	<td id="round">
 		<p><label>District :</label></p>
 	</td>
 	<td colspan="2">
-		<input name="name" type="text" size="15" maxlength="30" placeholder="Enter District name"/>
+		<input id="round2" name="district" type="text" size="15" placeholder="Enter District name"/>
 	</td>
 </tr>
 
 <tr>
-	<td>
+	<td id="round">
 		<p><label>Water Availability :</label></p>
 	</td>
-		<td>
-		<input name="available" type="radio" value="yes">Yes</input>
-	</td>
 	<td>
-		<input name="available" type="radio" value="no" >No</input>
+		<select id="round2" name="water">
+		<option value="1">Ample</option>
+		<option value="2">Adequate</option>
+		<option value="3">Insufficient</option>
+		<option value="4">No water</option>
+		</select>
 	</td>
-
 </tr>
 
 <tr>
-	<td>
-		<p><label>Problems faceing due to farm :</label></p>
+	<td id="round">
+		<p><label>Type of soil :</label></p>
 	</td>
 	<td colspan="2">
-		<textarea rows="3" cols="35" placeholder="any problem enter here"></textarea>
+		<input id="round2" name="soil" type="text" size="15" placeholder="Enter soil type"/>
 	</td>
 </tr>
 
-<th colspan="3">
-	<input type="submit" value="submit"/>
-	<input type="reset" value="clear"/>
+<tr>
+	<td id="round">
+		<p><label>Any issues in farming :</label></p>
+	</td>
+	<td colspan="2">
+		<textarea  id="round2" name="issues" rows="3" cols="35" placeholder="enter issues here"></textarea>
+	</td>
+</tr>
+
+<th colspan="3" id="round">
+Check your details before submitting.<br/>
+	<input class="button button4 warning" name="checks" type="button" value="check" onclick="validation()"/>
+	<input class="button button4 success" name="submit" type="submit" value="submit"/>
+	<input class="button button4 danger" type="reset" name="clear" value="clear"/>
 </th>
 </thead>
 </table>
 </form>
 </center>
 </body>
-            </html>
+</html>
