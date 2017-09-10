@@ -11,9 +11,7 @@ $district   = $conn->real_escape_string($_POST['district']);
 $water   = $conn->real_escape_string($_POST['water']);
 $soil   = $conn->real_escape_string($_POST['soil']);
 $issues   = $conn->real_escape_string($_POST['issues']); 
-//$checks   = $conn->real_escape_string($_POST['checks']);
 $submit   = $conn->real_escape_string($_POST['submit']);
-//$clear  = $conn->real_escape_string($_POST['clear']);
 
 
 $query   = "INSERT into details(o_name,o_phone,l_size,village,district,water,soil,issues,submit) VALUES('" . $o_name . "','" . $o_phone . "','" . $l_size . "','" . $village. "','" . $district . "','" . $water. "','" . $soil . "','" . $issues . "','" . $submit . "')";
@@ -24,9 +22,12 @@ if (!$success) {
     die("Couldn't enter data: ".$conn->error);
  
 }
+
+$id = $conn->insert_id;
  
 echo "Thank You For Contacting Us <br>
-			We will reply you soon";
+			We will reply you soon<br>
+			Your Request-ID is:".$id."<br/>";
  
 $conn->close();
  
